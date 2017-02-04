@@ -63,6 +63,11 @@ class Motor:
         # 1周のステップ数 - 現在ステップ数 = 足りないステップ数
         # 現在ステップ数0の場合があるので、1周のステップ数の剰余を取る
         rest_steps = (self.steps - self.state) % self.steps
+        # もしrest_stepsが1周のステップ数の半分より大きい場合は、戻したほうが近いのでそうする
+        # 例えば、steps 200、rest_steps 150だったら、現状が50進んだ状態ということなので、-50動かせば良い
+        if rest_steps > (self.steps / 2):
+            rest_steps = rest_steps - self.steps
+
         self.move_steps(rest_steps)
 
     def print_state(self):
@@ -89,7 +94,7 @@ if __name__ == '__main__':
         time.sleep(1)  # 1秒停止
         motor.move_degree(-45)  # 45度戻す
         time.sleep(1)  # 1秒停止
-        motor.reset()  # リセット = 360 - 90 - 45 = 225 度回転
+        motor.reset()  # リセット = 360 - 90 = 270度回転 と見せかけて、90度戻す
 
 
     def move_motor3():
