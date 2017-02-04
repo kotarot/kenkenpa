@@ -44,9 +44,42 @@ def neutral_motor1():
 
 def neutral_motor2():
     u"""首振りモーターのニュートラル状態"""
-    motor = motors[0]
+    motor = motors[2]
     motor.move_degree(30, speed=0.5)
     time.sleep(1.5)
+    motor.move_degree(-30, speed=0.5)
+    motor.reset()
+
+
+def positive_motor0():
+    u"""羽モーターのポジティブ感情状態"""
+    motor = motors[0]
+    motor.move_degree(360, speed=1)
+    motor.reset()
+
+
+def positive_motor1():
+    u"""尻尾モーターのポジティブ感情状態"""
+    motor = motors[1]
+    motor.move_degree(60, speed=1)
+    motor.move_degree(-60, speed=1)
+    motor.move_degree(60, speed=1)
+    motor.move_degree(-60, speed=1)
+    motor.move_degree(60, speed=0.5)
+    motor.move_degree(-60, speed=0.5)
+    motor.reset()
+
+
+def positive_motor2():
+    u"""首振りモーターのポジティブ感情状態"""
+    motor = motors[2]
+    motor.move_degree(30, speed=0.5)
+    motor.move_degree(-30, speed=0.5)
+    motor.move_degree(30, speed=0.5)
+    motor.move_degree(-30, speed=0.5)
+    motor.move_degree(30, speed=0.5)
+    motor.move_degree(-30, speed=0.5)
+    motor.move_degree(30, speed=0.5)
     motor.move_degree(-30, speed=0.5)
     motor.reset()
 
@@ -64,6 +97,16 @@ def neutral_move():
     tm0.start()
     tm1.start()
     tm2.start()
+
+
+def positive_move():
+    tm0 = threading.Timer(0, positive_motor0)
+    tm1 = threading.Timer(0, positive_motor1)
+    tm2 = threading.Timer(0, positive_motor2)
+    tm0.start()
+    tm1.start()
+    tm2.start()
+    time.sleep(5)
 
 
 if __name__ == '__main__':
@@ -89,9 +132,9 @@ if __name__ == '__main__':
                     emotion = default_emotion(label_en)
 
                 # 感情ごとの処理を行う
-                # 感情ごとの処理はブロッキングな処理である
+                # 感情ごとの処理はブロッキングな処理である (各5秒)
                 if emotion == "positive":
-                    pass
+                    positive_move()
                 elif emotion == "negative":
                     pass
 
