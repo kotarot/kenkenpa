@@ -42,22 +42,22 @@ if __name__ == '__main__':
         # カメラ画像を一時ファイルに出力
         camera.capture(TMP_IMG_PATH)
         
-        elapsed_time = time.time() - start
-        print (u"captureにかかる時間:{0}".format(elapsed_time)) + "[sec]"
-        start = time.time()
+        #elapsed_time = time.time() - start
+        #print (u"captureにかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        #start = time.time()
         
         # 画像のロード
         img = image.load_img(TMP_IMG_PATH, target_size=(299, 299))
         
-        elapsed_time = time.time() - start
-        print (u"imgのロードにかかる時間:{0}".format(elapsed_time)) + "[sec]"
-        start = time.time()
+        #elapsed_time = time.time() - start
+        #print (u"imgのロードにかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        #start = time.time()
         
         cv2image = cv2.imread(TMP_IMG_PATH)
         
-        elapsed_time = time.time() - start
-        print (u"cv2imgのロードにかかる時間:{0}".format(elapsed_time)) + "[sec]"
-        start = time.time()
+        #elapsed_time = time.time() - start
+        #print (u"cv2imgのロードにかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        #start = time.time()
 
         # 物体認識
         x = image.img_to_array(img)
@@ -75,9 +75,9 @@ if __name__ == '__main__':
         else:
             print(u"何も見えない")
             
-        elapsed_time = time.time() - start
-        print (u"物体認識にかかる時間:{0}".format(elapsed_time)) + "[sec]"
-        start = time.time()
+        #elapsed_time = time.time() - start
+        #print (u"物体認識にかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        #start = time.time()
             
         # facerect_list = detectFace(cv2image)
         # if len(facerect_list) > 0:
