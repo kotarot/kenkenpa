@@ -148,6 +148,8 @@ def neutral_move():
 
 
 def positive_move():
+    u"""ポジティブのシーケンスを開始、5秒後に終了"""
+    print "ポジティブ動作開始"
     tm0 = threading.Timer(0, positive_motor0)
     tm1 = threading.Timer(0, positive_motor1)
     tm2 = threading.Timer(0, positive_motor2)
@@ -158,6 +160,8 @@ def positive_move():
 
 
 def super_positive_move():
+    u"""超ポジティブのシーケンスを開始、5秒後に終了"""
+    print "超ポジティブ動作開始"
     tm0 = threading.Timer(0, super_positive_motor0)
     tm1 = threading.Timer(0, super_positive_motor1)
     tm2 = threading.Timer(0, super_positive_motor2)
@@ -168,6 +172,8 @@ def super_positive_move():
 
 
 def negative_move():
+    u"""ネガティブのシーケンスを開始、5秒後に終了"""
+    print "ネガティブ動作開始"
     tm0 = threading.Timer(0, negative_motor0)
     tm1 = threading.Timer(0, negative_motor1)
     tm2 = threading.Timer(0, negative_motor2)
@@ -182,6 +188,7 @@ if __name__ == '__main__':
     try:
         while True:
             # ニュートラル動作をバックグラウンドで実施 約3秒
+            print "認識開始・ニュートラル動作開始"
             t_neutral = threading.Timer(0, neutral_move)
             t_neutral.start()
 
@@ -202,13 +209,13 @@ if __name__ == '__main__':
                 # 感情ごとの処理を行う
                 # 感情ごとの処理はブロッキングな処理である (各5秒)
                 if emotion == "positive":
-                    print u"ポジティブ！"
+                    print u"判定結果: ポジティブ！"
                     positive_move()
                 if emotion == "super_positive":
-                    print u"超めっちゃポジティブ！！！"
+                    print u"判定結果: 超めっちゃポジティブ！！！"
                     super_positive_move()
                 elif emotion == "negative":
-                    print u"ネガティブ……"
+                    print u"判定結果: ネガティブ……"
                     negative_move()
 
             else:
