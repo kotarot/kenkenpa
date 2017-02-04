@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import cv2
 
-CASCADE_PATH = "/usr/local/Cellar/opencv3/3.2.0/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
+CASCADE_PATH = "/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml"
 cascade = cv2.CascadeClassifier(CASCADE_PATH)
 
 def detectFace(image):
