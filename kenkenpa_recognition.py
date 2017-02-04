@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from inception_v3 import *
-# import cv2
+import cv2
 import time
 import picamera
 import sys
@@ -41,6 +41,7 @@ if __name__ == '__main__':
         camera.capture(TMP_IMG_PATH)
         # 画像のロード
         img = image.load_img(TMP_IMG_PATH, target_size=(299, 299))
+        cv2image = cv2.imread(TMP_IMG_PATH)
 
         # 物体認識
         x = image.img_to_array(img)
@@ -57,8 +58,11 @@ if __name__ == '__main__':
             print(u"{} ({})が見える (prob:{})".format(label_ja, label_en, prob))
         else:
             print(u"何も見えない")
-            
-        time.sleep(0.5)
 
+        facerect_list = detectFace(cv2image)
+        if len(facerect_list) > 0:
+            print u"顔が見える"
+        else:
+            print u"顔は見えない"
     #cam.release()
     #cv2.destroyAllWindows()
