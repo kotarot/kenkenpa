@@ -37,11 +37,27 @@ if __name__ == '__main__':
         ##cv2.imshow("Show FLAME Image", frame)
         #cv2.imwrite("temp.png", frame)
 
+        start = time.time()
+        
         # カメラ画像を一時ファイルに出力
         camera.capture(TMP_IMG_PATH)
+        
+        elapsed_time = time.time() - start
+        print (u"captureにかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        start = time.time()
+        
         # 画像のロード
         img = image.load_img(TMP_IMG_PATH, target_size=(299, 299))
+        
+        elapsed_time = time.time() - start
+        print (u"imgのロードにかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        start = time.time()
+        
         cv2image = cv2.imread(TMP_IMG_PATH)
+        
+        elapsed_time = time.time() - start
+        print (u"cv2imgのロードにかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        start = time.time()
 
         # 物体認識
         x = image.img_to_array(img)
@@ -58,11 +74,20 @@ if __name__ == '__main__':
             print(u"{} ({})が見える (prob:{})".format(label_ja, label_en, prob))
         else:
             print(u"何も見えない")
+            
+        elapsed_time = time.time() - start
+        print (u"物体認識にかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        start = time.time()
+            
+        # facerect_list = detectFace(cv2image)
+        # if len(facerect_list) > 0:
+        #     print u"顔が見える"
+        # else:
+        #     print u"顔は見えない"
+            
+        # elapsed_time = time.time() - start
+        # print (u"顔認識にかかる時間:{0}".format(elapsed_time)) + "[sec]"
+        # start = time.time()
 
-        facerect_list = detectFace(cv2image)
-        if len(facerect_list) > 0:
-            print u"顔が見える"
-        else:
-            print u"顔は見えない"
     #cam.release()
     #cv2.destroyAllWindows()
