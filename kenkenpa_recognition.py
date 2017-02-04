@@ -8,6 +8,15 @@ import sys
 import json
 # from gensim.models.word2vec import Word2Vec, Text8Corpus
 
+# opencv face recognition model
+CASCADE_PATH = "/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml"
+cascade = cv2.CascadeClassifier(CASCADE_PATH)
+
+def detectFace(image):
+    image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    facerect = cascade.detectMultiScale(image_gray, scaleFactor=1.07, minNeighbors=9, minSize=(10, 10))
+    return facerect
+
 # カメラの画像の一時ファイルの名称
 TMP_IMG_PATH = "capture.jpg"
 
