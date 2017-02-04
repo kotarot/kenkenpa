@@ -38,11 +38,9 @@ class Motor:
             GPIO.output(self.pins[1], o[1])
             GPIO.output(self.pins[2], o[2])
             GPIO.output(self.pins[3], o[3])
-            print o
-            print self.pins
             self.add_state(direction)
-            self.printe_state()
             time.sleep(interval)
+        self.print_state()
 
     def move_steps(self, num_steps, speed=1.0):
         u"""モータを指定されたステップ数分だけ動かす"""
@@ -67,7 +65,7 @@ class Motor:
         rest_steps = (self.steps - self.state) % self.steps
         self.move_steps(rest_steps)
 
-    def printe_state(self):
+    def print_state(self):
         u"""モーターの現在のステップ数を表示する"""
         print self.state
 
@@ -108,6 +106,7 @@ if __name__ == '__main__':
         motor.move_degree(-45)  # 45度首振りを3回
         time.sleep(1)  # 1秒停止
         motor.reset()  # リセット
+
 
     try:
         t1 = threading.Timer(0, move_motor1)

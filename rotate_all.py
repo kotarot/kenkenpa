@@ -79,3 +79,4 @@ for i in range(10000):
         GPIO.output(15, o[3])
 
         time.sleep(INTERVAL)
+        print INTERVAL
