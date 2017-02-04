@@ -202,9 +202,7 @@ if __name__ == '__main__':
                 reset_all_motors()
 
                 # 物体から感情を判定
-                emotion = emotion_map[label_en]
-                if emotion == "":
-                    emotion = default_emotion(label_en)
+                emotion = label2emotion(label_en)
 
                 # 感情ごとの処理を行う
                 # 感情ごとの処理はブロッキングな処理である (各5秒)
