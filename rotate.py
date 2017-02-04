@@ -9,7 +9,7 @@ GPIO.setup(33, GPIO.OUT) # GPIO 13
 GPIO.setup(35, GPIO.OUT) # GPIO 19 
 GPIO.setup(37, GPIO.OUT) # GPIO 26 
 
-STEP = 0.005
+INTERVAL = 0.002
 
 OUTPUTS = [
     [ GPIO.HIGH, GPIO.HIGH, GPIO.LOW,  GPIO.LOW  ],
@@ -25,4 +25,4 @@ for i in range(200):
         GPIO.output(35, o[1])
         GPIO.output(33, o[2])
         GPIO.output(37, o[3])
-        time.sleep(STEP)
+        time.sleep(INTERVAL)
