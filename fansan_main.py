@@ -12,8 +12,10 @@ def default_emotion(key):
 
 
 emotion_map = {
-    "banana": "positive",
-    "orange": "negative"
+    "banana": "super_positive",
+    "orange": "positive",
+    "teddy": "positive",
+    "laptop": "negative"
 }
 
 
@@ -61,17 +63,42 @@ def positive_motor0():
 def positive_motor1():
     u"""尻尾モーターのポジティブ感情状態"""
     motor = motors[1]
-    motor.move_degree(60, speed=1)
-    motor.move_degree(-60, speed=1)
-    motor.move_degree(60, speed=1)
-    motor.move_degree(-60, speed=1)
-    motor.move_degree(60, speed=0.5)
-    motor.move_degree(-60, speed=0.5)
+    motor.move_degree(60, speed=0.8)
+    motor.move_degree(-60, speed=0.8)
+    motor.move_degree(60, speed=0.8)
+    motor.move_degree(-60, speed=0.8)
     motor.reset()
 
 
 def positive_motor2():
     u"""首振りモーターのポジティブ感情状態"""
+    motor = motors[2]
+    motor.move_degree(30, speed=0.5)
+    motor.move_degree(-30, speed=0.5)
+    motor.reset()
+
+
+def super_positive_motor0():
+    u"""羽モーターの超ポジティブ感情状態"""
+    motor = motors[0]
+    motor.move_degree(360, speed=1)
+    motor.reset()
+
+
+def super_positive_motor1():
+    u"""尻尾モーターの超ポジティブ感情状態"""
+    motor = motors[1]
+    motor.move_degree(60, speed=1)
+    motor.move_degree(-60, speed=1)
+    motor.move_degree(60, speed=1)
+    motor.move_degree(-60, speed=1)
+    motor.move_degree(60, speed=1)
+    motor.move_degree(-60, speed=1)
+    motor.reset()
+
+
+def super_positive_motor2():
+    u"""首振りモーターの超ポジティブ感情状態"""
     motor = motors[2]
     motor.move_degree(30, speed=0.5)
     motor.move_degree(-30, speed=0.5)
@@ -81,6 +108,27 @@ def positive_motor2():
     motor.move_degree(-30, speed=0.5)
     motor.move_degree(30, speed=0.5)
     motor.move_degree(-30, speed=0.5)
+    motor.reset()
+
+
+def negative_motor0():
+    u"""羽モーターのネガティブ感情状態"""
+    motor = motors[0]
+    motor.reset()
+
+
+def negative_motor1():
+    u"""尻尾モーターのネガティブ感情状態"""
+    motor = motors[1]
+    motor.reset()
+
+
+def negative_motor2():
+    u"""首振りモーターのネガティブ感情状態"""
+    motor = motors[2]
+    motor.move_degree(90, speed=1.0)
+    time.sleep(3)
+    motor.move_degree(-90, speed=1.0)
     motor.reset()
 
 
@@ -103,6 +151,26 @@ def positive_move():
     tm0 = threading.Timer(0, positive_motor0)
     tm1 = threading.Timer(0, positive_motor1)
     tm2 = threading.Timer(0, positive_motor2)
+    tm0.start()
+    tm1.start()
+    tm2.start()
+    time.sleep(5)
+
+
+def super_positive_move():
+    tm0 = threading.Timer(0, super_positive_motor0)
+    tm1 = threading.Timer(0, super_positive_motor1)
+    tm2 = threading.Timer(0, super_positive_motor2)
+    tm0.start()
+    tm1.start()
+    tm2.start()
+    time.sleep(5)
+
+
+def negative_move():
+    tm0 = threading.Timer(0, negative_motor0)
+    tm1 = threading.Timer(0, negative_motor1)
+    tm2 = threading.Timer(0, negative_motor2)
     tm0.start()
     tm1.start()
     tm2.start()
@@ -134,9 +202,14 @@ if __name__ == '__main__':
                 # 感情ごとの処理を行う
                 # 感情ごとの処理はブロッキングな処理である (各5秒)
                 if emotion == "positive":
+                    print u"ポジティブ！"
                     positive_move()
+                if emotion == "super_positive":
+                    print u"超めっちゃポジティブ！！！"
+                    super_positive_move()
                 elif emotion == "negative":
-                    pass
+                    print u"ネガティブ……"
+                    negative_move()
 
             else:
                 # 認識に失敗した場合
