@@ -15,7 +15,10 @@ emotion_map = {
     "banana": "super_positive",
     "orange": "positive",
     "teddy": "positive",
-    "laptop": "negative"
+    "laptop": "negative",
+    "ping-pong_ball": "negative",
+    "cucumber": "negative",
+    "bell_pepper": "negative"
 }
 
 
@@ -36,8 +39,8 @@ def neutral_motor0():
 
 def neutral_motor1():
     u"""尻尾モーターのニュートラル状態"""
-    motor = motors[1]
-    deg = 60
+    motor = motors[3]
+    deg = 60 * 13
     motor.move_degree(deg, speed=0.5)
     time.sleep(1.5)
     motor.move_degree(-deg, speed=0.5)
@@ -48,50 +51,54 @@ def neutral_motor1():
 def neutral_motor2():
     u"""首振りモーターのニュートラル状態"""
     motor = motors[2]
-    motor.move_degree(30, speed=0.5)
-    time.sleep(1.5)
-    motor.move_degree(-30, speed=0.5)
+    #deg = 30 * 13
+    #motor.move_degree(deg, speed=1)
+    #time.sleep(1)
+    #motor.move_degree(-deg, speed=1)
+    #time.sleep(1)
     motor.reset()
 
 
 def positive_motor0():
     u"""羽モーターのポジティブ感情状態"""
     motor = motors[0]
-    motor.move_degree(360, speed=1)
+    #motor.move_degree(360, speed=1)
     motor.reset()
 
 
 def positive_motor1():
     u"""尻尾モーターのポジティブ感情状態"""
-    motor = motors[1]
-    deg = 60
-    motor.move_degree(deg, speed=0.8)
-    motor.move_degree(-deg, speed=0.8)
-    motor.move_degree(deg, speed=0.8)
-    motor.move_degree(-deg, speed=0.8)
+    motor = motors[3]
+    deg = 60 * 13
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
     motor.reset()
 
 
 def positive_motor2():
     u"""首振りモーターのポジティブ感情状態"""
     motor = motors[2]
-    deg = 30
-    motor.move_degree(deg, speed=0.5)
-    motor.move_degree(-deg, speed=0.5)
+    deg = 45 * 13
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
     motor.reset()
 
 
 def super_positive_motor0():
     u"""羽モーターの超ポジティブ感情状態"""
     motor = motors[0]
-    motor.move_degree(360, speed=1)
+    #motor.move_degree(360, speed=1)
     motor.reset()
 
 
 def super_positive_motor1():
     u"""尻尾モーターの超ポジティブ感情状態"""
     motor = motors[3]
-    deg = 90
+    deg = 70 * 13
     motor.move_degree(deg, speed=1)
     motor.move_degree(-deg, speed=1)
     motor.move_degree(deg, speed=1)
@@ -104,15 +111,15 @@ def super_positive_motor1():
 def super_positive_motor2():
     u"""首振りモーターの超ポジティブ感情状態"""
     motor = motors[2]
-    deg = 30
-    motor.move_degree(deg, speed=0.5)
-    motor.move_degree(-deg, speed=0.5)
-    motor.move_degree(deg, speed=0.5)
-    motor.move_degree(-deg, speed=0.5)
-    motor.move_degree(deg, speed=0.5)
-    motor.move_degree(-deg, speed=0.5)
-    motor.move_degree(deg, speed=0.5)
-    motor.move_degree(-deg, speed=0.5)
+    deg = 50 * 13
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
     motor.reset()
 
 
@@ -124,16 +131,17 @@ def negative_motor0():
 
 def negative_motor1():
     u"""尻尾モーターのネガティブ感情状態"""
-    motor = motors[1]
+    motor = motors[3]
     motor.reset()
 
 
 def negative_motor2():
     u"""首振りモーターのネガティブ感情状態"""
     motor = motors[2]
-    motor.move_degree(90, speed=1.0)
+    deg = 90 * 13
+    motor.move_degree(deg, speed=1.0)
     time.sleep(3)
-    motor.move_degree(-90, speed=1.0)
+    motor.move_degree(-deg, speed=1.0)
     motor.reset()
 
 
