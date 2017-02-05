@@ -37,9 +37,10 @@ def neutral_motor0():
 def neutral_motor1():
     u"""尻尾モーターのニュートラル状態"""
     motor = motors[1]
-    motor.move_degree(60, speed=0.5)
+    deg = 60
+    motor.move_degree(deg, speed=0.5)
     time.sleep(1.5)
-    motor.move_degree(-60, speed=0.5)
+    motor.move_degree(-deg, speed=0.5)
     time.sleep(1.5)
     motor.reset()
 
@@ -63,18 +64,20 @@ def positive_motor0():
 def positive_motor1():
     u"""尻尾モーターのポジティブ感情状態"""
     motor = motors[1]
-    motor.move_degree(60, speed=0.8)
-    motor.move_degree(-60, speed=0.8)
-    motor.move_degree(60, speed=0.8)
-    motor.move_degree(-60, speed=0.8)
+    deg = 60
+    motor.move_degree(deg, speed=0.8)
+    motor.move_degree(-deg, speed=0.8)
+    motor.move_degree(deg, speed=0.8)
+    motor.move_degree(-deg, speed=0.8)
     motor.reset()
 
 
 def positive_motor2():
     u"""首振りモーターのポジティブ感情状態"""
     motor = motors[2]
-    motor.move_degree(30, speed=0.5)
-    motor.move_degree(-30, speed=0.5)
+    deg = 30
+    motor.move_degree(deg, speed=0.5)
+    motor.move_degree(-deg, speed=0.5)
     motor.reset()
 
 
@@ -87,27 +90,29 @@ def super_positive_motor0():
 
 def super_positive_motor1():
     u"""尻尾モーターの超ポジティブ感情状態"""
-    motor = motors[1]
-    motor.move_degree(60, speed=1)
-    motor.move_degree(-60, speed=1)
-    motor.move_degree(60, speed=1)
-    motor.move_degree(-60, speed=1)
-    motor.move_degree(60, speed=1)
-    motor.move_degree(-60, speed=1)
+    motor = motors[3]
+    deg = 90
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
+    motor.move_degree(deg, speed=1)
+    motor.move_degree(-deg, speed=1)
     motor.reset()
 
 
 def super_positive_motor2():
     u"""首振りモーターの超ポジティブ感情状態"""
     motor = motors[2]
-    motor.move_degree(30, speed=0.5)
-    motor.move_degree(-30, speed=0.5)
-    motor.move_degree(30, speed=0.5)
-    motor.move_degree(-30, speed=0.5)
-    motor.move_degree(30, speed=0.5)
-    motor.move_degree(-30, speed=0.5)
-    motor.move_degree(30, speed=0.5)
-    motor.move_degree(-30, speed=0.5)
+    deg = 30
+    motor.move_degree(deg, speed=0.5)
+    motor.move_degree(-deg, speed=0.5)
+    motor.move_degree(deg, speed=0.5)
+    motor.move_degree(-deg, speed=0.5)
+    motor.move_degree(deg, speed=0.5)
+    motor.move_degree(-deg, speed=0.5)
+    motor.move_degree(deg, speed=0.5)
+    motor.move_degree(-deg, speed=0.5)
     motor.reset()
 
 
