@@ -40,7 +40,7 @@ class Motor:
             GPIO.output(self.pins[3], o[3])
             self.add_state(direction)
             time.sleep(interval)
-        self.print_state()
+            # self.print_state()
 
     def move_steps(self, num_steps, speed=1.0):
         u"""モータを指定されたステップ数分だけ動かす"""
@@ -49,7 +49,7 @@ class Motor:
         direction = int(math.copysign(1, num_steps))
         num_loop = int(abs_num_steps / 4)
         for i in range(num_loop):
-            self.move_4steps(direction=direction)
+            self.move_4steps(direction=direction, interval=interval)
 
     def move_degree(self, degree, speed=1.0):
         u"""モータを指定された角度だけ動かす"""
